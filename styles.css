@@ -987,7 +987,7 @@ header::after {
 footer {
   background: var(--gradient-dark);
   color: var(--mercedes-silver);
-  padding: 4rem 2rem 2rem;
+  padding: 2rem 1rem;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -995,11 +995,11 @@ footer {
 }
 
 .footer-content {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 2rem;
   text-align: center;
 }
 
@@ -1128,8 +1128,8 @@ footer {
 .floating-whatsapp-button {
   position: fixed;
   right: 20px;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1158,18 +1158,46 @@ footer {
 .floating-whatsapp-button {
   background-color: #25d366;
   color: white;
-  bottom: 90px;
+  bottom: 80px;
 }
 
 @media (max-width: 768px) {
-  .hero {
-    padding: 80px 1rem 2rem;
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0;
   }
 
-  .hero-content {
-    width: 95%;
-    padding: 1.5rem;
-    margin-top: 40px;
+  .footer-section {
+    margin-bottom: 1rem;
+  }
+
+  .footer-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-section p,
+  .footer-section li a {
+    font-size: 0.9rem;
+  }
+
+  .social-links {
+    gap: 1rem;
+  }
+
+  .social-links a {
+    width: 35px;
+    height: 35px;
+  }
+
+  .social-links a i {
+    font-size: 1rem;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+    padding: 0.5rem;
   }
 
   .floating-call-button,
@@ -1181,59 +1209,39 @@ footer {
   }
 
   .floating-whatsapp-button {
-    bottom: 85px;
-  }
-
-  .floating-call-button {
-    bottom: 20px;
-  }
-
-  /* Footer */
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 0 1rem;
-  }
-
-  .footer-section {
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-section h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-
-  .footer-section p,
-  .footer-section li a {
-    font-size: 1rem;
-  }
-
-  .social-links {
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .social-links a {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-content {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 30px;
-  }
-
-  .floating-whatsapp-button {
     bottom: 80px;
   }
 
   .floating-call-button {
     bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section h3 {
+    font-size: 1rem;
+  }
+
+  .footer-section p,
+  .footer-section li a {
+    font-size: 0.85rem;
+  }
+
+  .social-links a {
+    width: 32px;
+    height: 32px;
+  }
+
+  .social-links a i {
+    font-size: 0.9rem;
+  }
+
+  .floating-call-button,
+  .floating-email-button,
+  .floating-whatsapp-button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 }
 
@@ -1417,7 +1425,7 @@ footer {
 footer {
   background: var(--gradient-dark);
   color: var(--mercedes-silver);
-  padding: 4rem 2rem 2rem;
+  padding: 2rem 1rem;
   position: relative;
   z-index: 1;
   width: 100%;
