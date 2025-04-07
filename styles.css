@@ -800,6 +800,7 @@ header::after {
 @media (max-width: 768px) {
   body {
     padding-top: 70px; /* Adjust body padding for mobile */
+    font-size: 14px;
   }
 
   header {
@@ -815,18 +816,18 @@ header::after {
   }
 
   .hero-content {
-    padding: 1.5rem;
+    padding: 1rem;
     width: 95%;
     margin-bottom: 0; /* No bottom margin needed on mobile */
   }
 
   .hero h1 {
-    font-size: clamp(2.2rem, 7vw, 3rem);
+    font-size: 2rem;
     margin-bottom: 0.2rem;
   }
 
   .hero .subtitle {
-    font-size: clamp(1.1rem, 4vw, 1.8rem);
+    font-size: 1.2rem;
     margin-bottom: 1.2rem;
     padding-bottom: 0.8rem;
   }
@@ -837,7 +838,7 @@ header::after {
 
   .hero p {
     margin-bottom: 1.5rem;
-    font-size: clamp(1rem, 4vw, 1.1rem);
+    font-size: 1rem;
   }
 
   .services,
@@ -854,7 +855,15 @@ header::after {
   }
 
   .service-card {
-    padding: 2rem;
+    padding: 1.5rem;
+  }
+
+  .service-card i {
+    font-size: 2rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.2rem;
   }
 
   .contact-container {
@@ -866,7 +875,7 @@ header::after {
   }
 
   .modern-call-section {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem;
     max-width: 320px;
   }
 
@@ -921,12 +930,12 @@ header::after {
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 7vw, 2.5rem);
+    font-size: 2rem;
     margin-bottom: 1rem;
   }
 
   .hero p {
-    font-size: clamp(1rem, 4vw, 1.1rem);
+    font-size: 1rem;
     margin-bottom: 1.5rem;
   }
 
@@ -1116,62 +1125,105 @@ footer {
   color: #000000;
 }
 
-/* Floating Call Button */
-.floating-call-button {
+/* כפתורים צפים */
+.floating-call-button,
+.floating-email-button,
+.floating-whatsapp-button {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 70px;
-  height: 70px;
-  background: var(--gradient-gold);
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 24px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
   z-index: 1000;
+  text-decoration: none;
   border: none;
   outline: none;
-  text-decoration: none;
-  will-change: transform;
-  cursor: pointer;
+}
+
+.floating-call-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.floating-email-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.floating-whatsapp-button {
+  background-color: #25d366;
+  color: white;
+  bottom: 90px;
 }
 
 .floating-call-button:hover,
-.floating-call-button:focus,
-.floating-call-button:active {
+.floating-email-button:hover,
+.floating-whatsapp-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  outline: none;
   text-decoration: none;
+  border: none;
+  outline: none;
 }
 
-.floating-call-button i {
-  color: var(--mercedes-black);
-  font-size: 1.8rem;
+.floating-call-button:hover {
+  background-color: #45a049;
+}
+
+.floating-email-button:hover {
+  background-color: #1976d2;
+}
+
+.floating-whatsapp-button:hover {
+  background-color: #128c7e;
+}
+
+/* הסתרת כפתור המייל במובייל */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .floating-whatsapp-button {
+    bottom: 70px; /* מיקום מעל כפתור החיוג במובייל */
+  }
+}
+
+/* הסתרת כפתור החיוג במחשב */
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+  .floating-whatsapp-button {
+    bottom: 90px; /* מיקום מעל כפתור המייל במחשב */
+  }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   /* Hero Section */
   .hero-content {
-    padding: 2.5rem;
+    padding: 1rem;
     width: 95%;
   }
 
   .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 1.2rem;
   }
 
   .hero-content .subtitle {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     margin-bottom: 1.8rem;
   }
 
   .hero-content p {
-    font-size: 1.3rem;
+    font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 2.5rem;
   }
@@ -1187,23 +1239,23 @@ footer {
   }
 
   .modern-call-section {
-    padding: 2.5rem;
+    padding: 1.5rem;
   }
 
   .call-content h3 {
-    font-size: 2.2rem;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
   }
 
   .phone-number a,
   .whatsapp-link a {
-    font-size: 1.8rem;
-    padding: 1.2rem;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
     max-width: 350px;
   }
 
   .availability {
-    font-size: 1.6rem;
+    font-size: 1rem;
     margin-top: 2rem;
     font-weight: 500;
   }
@@ -1217,114 +1269,114 @@ footer {
   }
 
   .info-item i {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
   }
 
   .info-item p {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   /* Footer */
   .footer-section h3 {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     margin-bottom: 1.5rem;
   }
 
   .footer-section p,
   .footer-section li a {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
   }
 
   .social-links a {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 
   .social-links a i {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
 
   .copyright {
-    font-size: 1rem;
+    font-size: 0.8rem;
     padding: 1rem;
   }
 
   /* Floating Call Button */
   .floating-call-button {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     right: 20px;
-    bottom: 20px;
+    bottom: 70px;
   }
 
   .floating-call-button i {
-    font-size: 2.5rem;
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 480px) {
   /* Hero Section */
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .hero-content .subtitle {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 
   .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   /* Contact Section */
   .call-content h3 {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 
   .phone-number a,
   .whatsapp-link a {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 
   .availability {
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 
   .info-item i {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .info-item p {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 
   /* Footer */
   .footer-section h3 {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
   }
 
   .footer-section p,
   .footer-section li a {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .social-links a {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
   }
 
   .social-links a i {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   /* Floating Call Button */
   .floating-call-button {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
   }
 
   .floating-call-button i {
-    font-size: 2.2rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -1530,7 +1582,7 @@ html {
 
   /* Services section */
   .services h2 {
-    font-size: 3rem;
+    font-size: 1.8rem;
   }
 
   .services-grid {
@@ -1538,16 +1590,16 @@ html {
   }
 
   .service-card {
-    padding: 2rem;
+    padding: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
   .service-card i {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .service-card h3 {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
 
   /* Gallery */
@@ -1561,7 +1613,7 @@ html {
 
   /* Contact section */
   .contact h2 {
-    font-size: 3rem;
+    font-size: 1.8rem;
     margin-bottom: 2rem;
   }
 
@@ -1575,18 +1627,18 @@ html {
   }
 
   .call-content h3 {
-    font-size: 2.5rem;
+    font-size: 1.4rem;
     margin-bottom: 1.5rem;
   }
 
   .phone-number a,
   .whatsapp-link a {
-    font-size: 2rem;
-    padding: 1rem;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
   }
 
   .availability {
-    font-size: 1.8rem;
+    font-size: 1rem;
     font-weight: 700;
     margin-top: 1.5rem;
   }
@@ -1601,11 +1653,11 @@ html {
   }
 
   .info-item i {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
   }
 
   .info-item p {
-    font-size: 1.8rem;
+    font-size: 1rem;
   }
 
   /* Footer */
@@ -1619,12 +1671,12 @@ html {
   }
 
   .footer-section h3 {
-    font-size: 2.2rem;
+    font-size: 1.2rem;
   }
 
   .footer-section p,
   .footer-section li a {
-    font-size: 1.6rem;
+    font-size: 0.9rem;
   }
 
   .social-links a {
@@ -1634,7 +1686,7 @@ html {
   }
 
   .social-links a i {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
 
   .footer-bottom {
@@ -1642,7 +1694,7 @@ html {
   }
 
   .copyright {
-    font-size: 1.4rem;
+    font-size: 0.8rem;
   }
 
   /* Floating call button */
@@ -1654,7 +1706,7 @@ html {
   }
 
   .floating-call-button i {
-    font-size: 3rem;
+    font-size: 1.2rem;
   }
 
   /* Navigation */
@@ -1702,24 +1754,24 @@ html {
 
   /* Contact */
   .call-content h3 {
-    font-size: 2.2rem;
+    font-size: 1.4rem;
   }
 
   .phone-number a,
   .whatsapp-link a {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
 
   .availability {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 
   .info-item i {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .info-item p {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 
   /* Floating call button */
@@ -1731,7 +1783,7 @@ html {
   }
 
   .floating-call-button i {
-    font-size: 2.8rem;
+    font-size: 1.2rem;
   }
 }
 
