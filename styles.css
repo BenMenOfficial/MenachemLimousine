@@ -61,7 +61,7 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
-  padding-top: 80px; /* Add global padding for the fixed header */
+  padding-top: 80px; /* Add padding for fixed header */
 }
 
 h1,
@@ -799,8 +799,8 @@ header::after {
 /* Responsive Design - Hero Section */
 @media (max-width: 768px) {
   body {
-    padding-top: 70px; /* Adjust body padding for mobile */
     font-size: var(--font-size-mobile);
+    padding-top: 70px; /* Adjust for mobile header */
   }
 
   header {
@@ -809,9 +809,10 @@ header::after {
 
   .hero {
     height: auto;
-    min-height: 100vh;
-    padding: 60px 1rem 2rem;
+    min-height: calc(100vh - 70px); /* Subtract header height */
+    padding: 0 1rem;
     margin-top: -70px;
+    display: flex;
     align-items: center;
   }
 
@@ -819,6 +820,7 @@ header::after {
     padding: 1.5rem;
     width: 100%;
     max-width: 100%;
+    margin-top: 70px; /* Add margin to see the title */
   }
 
   .hero h1 {
@@ -920,13 +922,11 @@ header::after {
 /* Smaller mobile devices */
 @media (max-width: 480px) {
   .hero-content {
-    padding: 1.5rem;
-    width: 95%;
+    margin-top: 60px; /* Slightly less margin on smaller screens */
   }
 
   .hero h1 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
   }
 
   .hero p {
@@ -937,6 +937,10 @@ header::after {
   .cta-button {
     padding: 12px 24px;
     font-size: 1.1rem;
+  }
+
+  .floating-whatsapp-button {
+    bottom: 75px; /* Adjust for smaller screens */
   }
 }
 
@@ -1185,7 +1189,7 @@ footer {
     display: none !important;
   }
   .floating-whatsapp-button {
-    bottom: 70px; /* מיקום מעל כפתור החיוג במובייל */
+    bottom: 80px; /* Move WhatsApp button up */
   }
 }
 
@@ -1301,7 +1305,7 @@ footer {
     width: 50px;
     height: 50px;
     right: 20px;
-    bottom: 70px;
+    bottom: 20px;
   }
 
   .floating-call-button i {
