@@ -114,12 +114,22 @@ const initializeForm = () => {
 const initializeScrollAnimations = () => {
   const animateOnScroll = () => {
     const elements = document.querySelectorAll(".service-card, .vehicle-card");
-    elements.forEach((element) => {
-      const elementTop = element.getBoundingClientRect().top;
-      const elementBottom = element.getBoundingClientRect().bottom;
 
-      if (elementTop < window.innerHeight && elementBottom > 0) {
-        element.classList.add("visible");
+    elements.forEach((element) => {
+      if (element) {
+        try {
+          const elementPosition = element.getBoundingClientRect();
+          const elementTop = elementPosition.top;
+          const elementBottom = elementPosition.bottom;
+
+          if (elementTop < window.innerHeight && elementBottom > 0) {
+            element.classList.add("visible");
+          }
+        } catch (error) {
+          // בטוח יותר - נוסיף את visible בכל מקרה אם יש שגיאה
+          console.log("Error checking element position:", error);
+          element.classList.add("visible");
+        }
       }
     });
   };
@@ -278,33 +288,38 @@ const initGallery = () => {
   });
 };
 
-// Scroll reveal functionality
-function revealOnScroll() {
+// הפונקציה החדשה שתחליף את revealOnScroll
+function showAllElements() {
   const elements = document.querySelectorAll(
     ".reveal, .hero-content, .service-card, .gallery-item, .modern-call-section, .info-item, .footer-section"
   );
 
+  // הוספת קלאס active לכל האלמנטים כדי שיהיו גלויים באופן קבוע
   elements.forEach((element) => {
-    const elementTop = element.getBoundingClientRect().top;
-    const elementVisible = 150;
-
-    if (elementTop < window.innerHeight - elementVisible) {
+    if (element) {
       element.classList.add("active");
+      element.classList.add("visible");
     }
   });
 }
 
 // Initial check on page load
 document.addEventListener("DOMContentLoaded", () => {
-  createMobileNav();
-  initializeForm();
-  initializeScrollAnimations();
-  initializeHeaderEffect();
-  initGallery(); // Initialize gallery
-  revealOnScroll();
+  try {
+    createMobileNav();
+    initializeForm();
+    initializeScrollAnimations();
+    initializeHeaderEffect();
+    initGallery(); // Initialize gallery
+
+    // Make all elements visible immediately
+    showAllElements();
+
+    // וגם: נוסיף קריאה שוב אחרי 500ms למקרה שהטעינה התעכבה
+    setTimeout(showAllElements, 500);
+  } catch (error) {
+    console.error("Error initializing page:", error);
+  }
 });
 
-// Check on scroll
-window.addEventListener("scroll", () => {
-  revealOnScroll();
-});
+// אין צורך בבדיקה בזמן גלילה כי כל האלמנטים תמיד גלויים
