@@ -1132,143 +1132,178 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  header {
-    height: 70px; /* Smaller header on mobile */
-  }
-
-  .hero {
-    height: auto;
-    min-height: 100vh;
-    padding: 6rem 1rem 2rem;
-    padding-top: 90px; /* Adjust padding for mobile */
-  }
-
+  /* Hero Section */
   .hero-content {
     padding: 2rem;
-    width: 95%;
   }
 
-  .hero h1 {
-    margin-bottom: 1.5rem;
-  }
-
-  .hero p {
-    margin-bottom: 2rem;
-  }
-
-  .services,
-  .gallery,
-  .contact {
-    padding: 4rem 1rem;
-    padding-top: 90px; /* Adjust padding for mobile */
-    margin-top: -40px; /* Adjust margin for mobile */
-  }
-
-  .services-grid,
-  .gallery-container {
-    grid-template-columns: 1fr;
-  }
-
-  .service-card {
-    padding: 2rem;
-  }
-
-  .contact-container {
-    grid-template-columns: 1fr;
-  }
-
-  .info-item {
-    padding: 1rem;
-  }
-
-  .modern-call-section {
-    padding: 1.5rem 1rem;
-    max-width: 320px;
-  }
-
-  .modern-call-section h3 {
-    font-size: 1.3rem;
-  }
-
-  .phone-number a {
-    padding: 0.7rem 1.5rem;
-    font-size: 1.2rem;
-  }
-
-  .gallery h2 {
-    font-size: 2rem;
-  }
-
-  html {
-    scroll-padding-top: 80px; /* Adjust scroll padding for mobile */
-  }
-}
-
-/* Smaller mobile devices */
-@media (max-width: 480px) {
-  .hero-content {
-    padding: 1.5rem;
-    width: 95%;
-  }
-
-  .hero h1 {
-    font-size: clamp(2rem, 7vw, 2.5rem);
+  .hero-content h1 {
+    font-size: 2.5rem;
     margin-bottom: 1rem;
   }
 
-  .hero p {
-    font-size: clamp(1rem, 4vw, 1.1rem);
+  .hero-content .subtitle {
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
-  .cta-button {
-    padding: 12px 24px;
+  .hero-content p {
     font-size: 1.1rem;
-  }
-}
-
-/* Mobile Navigation */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--mercedes-black);
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
+    line-height: 1.6;
+    margin-bottom: 2rem;
   }
 
-  /* Center logo in mobile view */
-  nav {
-    justify-content: center;
-    position: relative;
+  .cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
   }
 
-  .logo {
-    margin: 0 auto;
-    text-align: center;
+  /* Contact Section */
+  .contact-container {
+    padding: 2rem;
+  }
+
+  .modern-call-section {
+    padding: 2rem;
+  }
+
+  .call-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .phone-number a,
+  .whatsapp-link a {
+    font-size: 1.4rem;
+    padding: 1rem;
+  }
+
+  .availability {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .contact-info {
+    padding: 2rem;
+  }
+
+  .info-item {
+    padding: 1.5rem;
+  }
+
+  .info-item i {
     font-size: 1.8rem;
   }
 
-  .nav-links {
-    display: none;
+  .info-item p {
+    font-size: 1.2rem;
+  }
+
+  /* Footer */
+  .footer-content {
+    padding: 2rem;
+  }
+
+  .footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-section p,
+  .footer-section li a {
+    font-size: 1.1rem;
+  }
+
+  .social-links a {
+    width: 50px;
+    height: 50px;
+  }
+
+  .social-links a i {
+    font-size: 1.8rem;
+  }
+
+  .copyright {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  /* Floating Call Button */
+  .floating-call-button {
+    width: 60px;
+    height: 60px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .floating-call-button i {
+    font-size: 1.8rem;
   }
 }
 
-/* Responsive footer for mobile screens */
-@media (max-width: 768px) {
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+@media (max-width: 480px) {
+  /* Hero Section */
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  /* Contact Section */
+  .call-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .phone-number a,
+  .whatsapp-link a {
+    font-size: 1.2rem;
+  }
+
+  .availability {
+    font-size: 1.1rem;
+  }
+
+  .info-item i {
+    font-size: 1.5rem;
+  }
+
+  .info-item p {
+    font-size: 1.1rem;
+  }
+
+  /* Footer */
+  .footer-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .footer-section p,
+  .footer-section li a {
+    font-size: 1rem;
+  }
+
+  .social-links a {
+    width: 45px;
+    height: 45px;
+  }
+
+  .social-links a i {
+    font-size: 1.5rem;
+  }
+
+  /* Floating Call Button */
+  .floating-call-button {
+    width: 55px;
+    height: 55px;
+  }
+
+  .floating-call-button i {
+    font-size: 1.5rem;
   }
 }
 
