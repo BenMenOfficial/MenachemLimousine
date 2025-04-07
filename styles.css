@@ -69,6 +69,59 @@ textarea {
   );
 }
 
+/* Scroll Reveal Animations - ביטול האפקט כדי שהתוכן יהיה גלוי תמיד */
+.reveal,
+.hero-content,
+.service-card,
+.gallery-item,
+.modern-call-section,
+.info-item,
+.footer-section {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: none !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* הסרת ה-staggered animations */
+.service-card:nth-child(1),
+.service-card:nth-child(2),
+.service-card:nth-child(3),
+.service-card:nth-child(4),
+.service-card:nth-child(5),
+.service-card:nth-child(6),
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(3),
+.gallery-item:nth-child(4),
+.gallery-item:nth-child(5),
+.gallery-item:nth-child(6),
+.info-item:nth-child(1),
+.info-item:nth-child(2),
+.info-item:nth-child(3),
+.footer-section:nth-child(1),
+.footer-section:nth-child(2),
+.footer-section:nth-child(3) {
+  transition-delay: 0s !important;
+}
+
+/* Keyframes */
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+    text-shadow: 0 0 5px #ffd700;
+  }
+  50% {
+    background-position: 0% 0;
+    text-shadow: 0 0 10px #ffd700;
+  }
+  100% {
+    background-position: 200% 0;
+    text-shadow: 0 0 5px #c0c0c0;
+  }
+}
+
 body {
   font-family: "Assistant", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -380,8 +433,6 @@ header::after {
   background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
   position: relative;
   z-index: 1;
-  padding-top: 8rem;
-  margin-top: 0;
 }
 
 .services h2 {
@@ -411,7 +462,9 @@ header::after {
 }
 
 .services-grid {
-  display: grid;
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2.5rem;
   max-width: 1200px;
@@ -658,7 +711,9 @@ header::after {
 }
 
 .gallery-container {
-  display: grid;
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1200px;
@@ -775,23 +830,30 @@ header::after {
 
 /* Contact Container Layout */
 .contact-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .contact-info {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   gap: 2rem;
+  width: 100%;
+  max-width: 450px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
 }
 
 .info-item {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 1.5rem;
   padding: 1.5rem;
@@ -800,14 +862,11 @@ header::after {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.info-item.active {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: none !important;
+  width: 100%;
+  visibility: visible !important;
 }
 
 .info-item:hover {
@@ -822,6 +881,13 @@ header::after {
   -webkit-text-fill-color: var(--mercedes-gold);
 }
 
+.info-item-content {
+  flex: 1;
+  overflow: hidden; /* מונע גלישה של התוכן */
+  word-break: break-word; /* שובר מילים ארוכות */
+  hyphens: auto; /* מוסיף מקף אוטומטי בין מילים */
+}
+
 .info-item-content h3 {
   font-size: 1.2rem;
   color: var(--mercedes-black);
@@ -831,6 +897,12 @@ header::after {
 .info-item-content p {
   color: var(--text-color);
   font-size: 1rem;
+  overflow-wrap: break-word; /* שובר מילים ארוכות */
+  word-wrap: break-word; /* תמיכה בדפדפנים ישנים */
+  -ms-word-break: break-all; /* לדפדפן IE */
+  word-break: break-word; /* שובר מילים לפי צורך */
+  max-width: 100%; /* מגביל את הרוחב */
+  display: block; /* מציג כבלוק לשליטה טובה יותר */
 }
 
 .phone-number {
@@ -885,14 +957,15 @@ header::after {
   z-index: 1;
   height: fit-content;
   width: 100%;
+  max-width: 450px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: none !important;
 }
 
 .modern-call-section.active {
@@ -1055,16 +1128,25 @@ header::after {
   }
 
   .contact-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .modern-call-section,
+  .contact-info {
+    width: 100%;
+    max-width: 100%;
   }
 
   .info-item {
-    padding: 1rem;
+    width: 100%;
+    padding: 1.2rem;
   }
 
   .modern-call-section {
     padding: 1.5rem;
-    max-width: 320px;
+    max-width: 100%;
   }
 
   .modern-call-section h3 {
@@ -1135,6 +1217,21 @@ header::after {
   .floating-whatsapp-button {
     bottom: 80px;
   }
+
+  .info-item {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+
+  .info-item i {
+    font-size: 1.3rem;
+    min-width: 20px; /* מינימום רוחב לאייקון */
+  }
+
+  .info-item-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 }
 
 /* Mobile Navigation */
@@ -1192,26 +1289,22 @@ footer {
 }
 
 .footer-content {
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   text-align: center;
 }
 
 .footer-section {
-  display: flex;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.footer-section.active {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .footer-section h3 {
@@ -1572,7 +1665,7 @@ footer {
   }
 
   .contact-info {
-    padding: 2rem;
+    width: 100%;
   }
 
   .info-item {
@@ -1618,394 +1711,6 @@ footer {
     height: 50px;
     right: 20px;
     bottom: 20px;
-  }
-
-  .floating-call-button i {
-    font-size: 1.2rem;
-  }
-
-  /* Navigation */
-  .logo {
-    font-size: 2rem;
-  }
-
-  .nav-links li a {
-    font-size: 1.6rem;
-    padding: 0.8rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  /* Hero section */
-  .hero h1 {
-    font-size: 3.2rem;
-  }
-
-  .hero h2 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1.4rem;
-  }
-
-  .cta-button {
-    font-size: 1.6rem;
-    padding: 1rem 2rem;
-  }
-
-  /* Services */
-  .service-card {
-    padding: 1.8rem;
-  }
-
-  .service-card i {
-    font-size: 2.8rem;
-  }
-
-  .service-card h3 {
-    font-size: 1.6rem;
-  }
-
-  /* Contact */
-  .call-content h3 {
-    font-size: 1.4rem;
-  }
-
-  .phone-number a,
-  .whatsapp-link a {
-    font-size: 1.2rem;
-  }
-
-  .availability {
-    font-size: 1rem;
-  }
-
-  .info-item i {
-    font-size: 1.5rem;
-  }
-
-  .info-item p {
-    font-size: 1rem;
-  }
-
-  /* Floating call button */
-  .floating-call-button {
-    width: 80px;
-    height: 80px;
-    bottom: 25px;
-    right: 25px;
-  }
-
-  .floating-call-button i {
-    font-size: 1.2rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    font-size: var(--font-size-mobile);
-  }
-}
-
-/* Scroll Reveal Animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Staggered Animations */
-.service-card:nth-child(1) {
-  transition-delay: 0.1s;
-}
-.service-card:nth-child(2) {
-  transition-delay: 0.2s;
-}
-.service-card:nth-child(3) {
-  transition-delay: 0.3s;
-}
-.service-card:nth-child(4) {
-  transition-delay: 0.4s;
-}
-.service-card:nth-child(5) {
-  transition-delay: 0.5s;
-}
-.service-card:nth-child(6) {
-  transition-delay: 0.6s;
-}
-
-.gallery-item:nth-child(1) {
-  transition-delay: 0.1s;
-}
-.gallery-item:nth-child(2) {
-  transition-delay: 0.2s;
-}
-.gallery-item:nth-child(3) {
-  transition-delay: 0.3s;
-}
-.gallery-item:nth-child(4) {
-  transition-delay: 0.4s;
-}
-.gallery-item:nth-child(5) {
-  transition-delay: 0.5s;
-}
-.gallery-item:nth-child(6) {
-  transition-delay: 0.6s;
-}
-
-.info-item:nth-child(1) {
-  transition-delay: 0.1s;
-}
-.info-item:nth-child(2) {
-  transition-delay: 0.2s;
-}
-.info-item:nth-child(3) {
-  transition-delay: 0.3s;
-}
-
-.footer-section:nth-child(1) {
-  transition-delay: 0.1s;
-}
-.footer-section:nth-child(2) {
-  transition-delay: 0.2s;
-}
-.footer-section:nth-child(3) {
-  transition-delay: 0.3s;
-}
-
-/* Keyframes */
-@keyframes shine {
-  0% {
-    background-position: -200% 0;
-    text-shadow: 0 0 5px #ffd700;
-  }
-  50% {
-    background-position: 0% 0;
-    text-shadow: 0 0 10px #ffd700;
-  }
-  100% {
-    background-position: 200% 0;
-    text-shadow: 0 0 5px #c0c0c0;
-  }
-}
-
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 5px var(--mercedes-gold), 0 0 10px var(--mercedes-gold);
-  }
-  50% {
-    box-shadow: 0 0 20px var(--mercedes-gold), 0 0 30px var(--mercedes-gold);
-  }
-  100% {
-    box-shadow: 0 0 5px var(--mercedes-gold), 0 0 10px var(--mercedes-gold);
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Section Anchor Points */
-#home,
-#services,
-#gallery,
-#contact {
-  scroll-margin-top: 100px;
-}
-
-@media (max-width: 768px) {
-  #home,
-  #services,
-  #gallery,
-  #contact {
-    scroll-margin-top: 80px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  /* Hero section */
-  .hero {
-    padding: 4rem 1.5rem;
-  }
-
-  .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero h2 {
-    font-size: 2.2rem;
-  }
-
-  .hero p {
-    font-size: 1.5rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-  }
-
-  .cta-button {
-    font-size: 1.8rem;
-    padding: 1rem 2rem;
-  }
-
-  /* Services section */
-  .services h2 {
-    font-size: 1.8rem;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .service-card {
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .service-card i {
-    font-size: 2rem;
-  }
-
-  .service-card h3 {
-    font-size: 1.2rem;
-  }
-
-  /* Gallery */
-  .gallery h2 {
-    font-size: 3rem;
-  }
-
-  .gallery-container {
-    grid-template-columns: 1fr;
-  }
-
-  /* Contact section */
-  .contact h2 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
-
-  .contact-container {
-    flex-direction: column;
-  }
-
-  .modern-call-section {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .call-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .phone-number a,
-  .whatsapp-link a {
-    font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
-  }
-
-  .availability {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-top: 1.5rem;
-  }
-
-  .contact-info {
-    width: 100%;
-  }
-
-  .info-item {
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .info-item i {
-    font-size: 1.5rem;
-  }
-
-  .info-item p {
-    font-size: 1rem;
-  }
-
-  /* Footer */
-  .footer-content {
-    flex-direction: column;
-  }
-
-  .footer-section {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .footer-section h3 {
-    font-size: 1.2rem;
-  }
-
-  .footer-section p,
-  .footer-section li a {
-    font-size: 0.9rem;
-  }
-
-  .social-links a {
-    width: 60px;
-    height: 60px;
-    margin: 0 10px;
-  }
-
-  .social-links a i {
-    font-size: 1.2rem;
-  }
-
-  .footer-bottom {
-    padding: 1.5rem;
-  }
-
-  .copyright {
-    font-size: 0.8rem;
-  }
-
-  /* Floating call button */
-  .floating-call-button {
-    width: 90px;
-    height: 90px;
-    bottom: 30px;
-    right: 30px;
   }
 
   .floating-call-button i {
@@ -2173,11 +1878,6 @@ main {
 .social-links a.hover-active {
   background: var(--mercedes-gold);
   transform: translateY(-3px);
-}
-
-.footer-section a.hover-active {
-  color: var(--mercedes-gold);
-  transform: translateX(-5px);
 }
 
 .nav-links a.hover-active {
@@ -2651,4 +2351,27 @@ main {
 }
 .footer-section:nth-child(3) {
   transition-delay: 0.3s;
+}
+
+/* Fix for the modern-call-section and contact-info */
+.modern-call-section,
+.contact-info {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+}
+
+/* Fix for mobile */
+@media (max-width: 960px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .modern-call-section,
+  .contact-info {
+    width: 100%;
+    max-width: 100%;
+  }
 }
