@@ -227,9 +227,9 @@ header::after {
 /* Hero Section */
 .hero {
   position: relative;
-  z-index: 1;
-  height: 100vh;
-  padding-top: 80px;
+  height: auto;
+  min-height: 100vh;
+  padding: 100px 1rem 2rem;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("images/mercedes-limo.jpg");
   background-size: cover;
@@ -238,22 +238,19 @@ header::after {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px 2rem 2rem 2rem;
   margin-top: -80px;
 }
 
 .hero-content {
-  max-width: 85%;
-  width: 100%;
+  max-width: 800px;
+  width: 90%;
   background: rgba(26, 26, 26, 0.85);
   backdrop-filter: blur(10px);
-  padding: clamp(1.2rem, 2vw, 2.5rem); /* Further reduce padding */
+  padding: 2rem;
   border-radius: 15px;
   border: 1px solid rgba(196, 167, 119, 0.3);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 5;
-  margin-bottom: 0; /* Remove bottom margin */
+  margin-top: 60px;
 }
 
 .hero h1 {
@@ -813,19 +810,13 @@ header::after {
   }
 
   .hero {
-    height: auto;
-    min-height: calc(100vh - 70px); /* Subtract header height */
-    padding: 0 1rem;
-    margin-top: -70px;
-    display: flex;
-    align-items: center;
+    padding: 80px 1rem 2rem;
   }
 
   .hero-content {
+    width: 95%;
     padding: 1.5rem;
-    width: 100%;
-    max-width: 100%;
-    margin-top: 70px; /* Add margin to see the title */
+    margin-top: 40px;
   }
 
   .hero h1 {
@@ -927,7 +918,9 @@ header::after {
 /* Smaller mobile devices */
 @media (max-width: 480px) {
   .hero-content {
-    margin-top: 60px; /* Slightly less margin on smaller screens */
+    width: 100%;
+    padding: 1rem;
+    margin-top: 30px;
   }
 
   .hero h1 {
@@ -945,7 +938,7 @@ header::after {
   }
 
   .floating-whatsapp-button {
-    bottom: 75px; /* Adjust for smaller screens */
+    bottom: 80px;
   }
 }
 
@@ -1134,15 +1127,14 @@ footer {
 .floating-email-button,
 .floating-whatsapp-button {
   position: fixed;
-  bottom: 20px;
   right: 20px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   z-index: 1000;
@@ -1154,11 +1146,13 @@ footer {
 .floating-call-button {
   background-color: #4caf50;
   color: white;
+  bottom: 20px;
 }
 
 .floating-email-button {
   background-color: #2196f3;
   color: white;
+  bottom: 20px;
 }
 
 .floating-whatsapp-button {
@@ -1167,44 +1161,79 @@ footer {
   bottom: 90px;
 }
 
-.floating-call-button:hover,
-.floating-email-button:hover,
-.floating-whatsapp-button:hover {
-  transform: scale(1.1);
-  text-decoration: none;
-  border: none;
-  outline: none;
-}
-
-.floating-call-button:hover {
-  background-color: #45a049;
-}
-
-.floating-email-button:hover {
-  background-color: #1976d2;
-}
-
-.floating-whatsapp-button:hover {
-  background-color: #128c7e;
-}
-
-/* הסתרת כפתור המייל במובייל */
 @media (max-width: 768px) {
-  .desktop-only {
-    display: none !important;
+  .hero {
+    padding: 80px 1rem 2rem;
   }
+
+  .hero-content {
+    width: 95%;
+    padding: 1.5rem;
+    margin-top: 40px;
+  }
+
+  .floating-call-button,
+  .floating-email-button,
   .floating-whatsapp-button {
-    bottom: 80px; /* Move WhatsApp button up */
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .floating-whatsapp-button {
+    bottom: 85px;
+  }
+
+  .floating-call-button {
+    bottom: 20px;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .footer-section {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-section p,
+  .footer-section li a {
+    font-size: 1rem;
+  }
+
+  .social-links {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .social-links a {
+    width: 40px;
+    height: 40px;
   }
 }
 
-/* הסתרת כפתור החיוג במחשב */
-@media (min-width: 769px) {
-  .mobile-only {
-    display: none !important;
+@media (max-width: 480px) {
+  .hero-content {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 30px;
   }
+
   .floating-whatsapp-button {
-    bottom: 90px; /* מיקום מעל כפתור המייל במחשב */
+    bottom: 80px;
+  }
+
+  .floating-call-button {
+    bottom: 20px;
   }
 }
 
