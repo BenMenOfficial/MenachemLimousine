@@ -1,5 +1,5 @@
 /* Reset and Base Styles */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
 * {
@@ -133,6 +133,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  animation: none;
 }
 
 .logo i {
@@ -148,6 +149,10 @@ nav {
   width: 100%;
   height: 2px;
   background: var(--gradient-gold);
+}
+
+.logo:hover {
+  animation: none;
 }
 
 .mercedes-logo-small {
@@ -175,7 +180,7 @@ nav {
 }
 
 .logo:hover .mercedes-logo-small .mercedes-star {
-  animation: rotate 2s ease infinite;
+  animation: none;
 }
 
 .nav-links {
@@ -195,6 +200,7 @@ nav {
   display: flex;
   align-items: center;
   cursor: pointer;
+  animation: none;
 }
 
 .nav-links a i {
@@ -226,6 +232,7 @@ nav {
 
 .nav-links a:hover {
   color: var(--mercedes-gold);
+  animation: none;
 }
 
 .nav-links a:hover::after {
@@ -280,30 +287,34 @@ header::after {
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-family: "Secular One", sans-serif;
+  font-size: clamp(3.2rem, 6.5vw, 6rem);
   margin-bottom: 0.3rem;
-  background: var(--gold-gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  color: #ffd700;
   letter-spacing: 2px;
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 0 5px #ffd700;
+  text-transform: uppercase;
+}
+
+.hero h1::before {
+  display: none;
 }
 
 .hero .subtitle {
-  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+  font-family: "Secular One", sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
   margin-bottom: 1.5rem;
-  color: var(--mercedes-silver);
+  color: #ffd700;
   letter-spacing: 1px;
-  font-weight: 500;
-  line-height: 1.3;
+  font-weight: 400;
+  line-height: 1.1;
   position: relative;
   display: inline-block;
   padding-bottom: 1.2rem;
   position: relative;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 5px #ffd700;
 }
 
 .hero .subtitle::after {
@@ -314,12 +325,7 @@ header::after {
   transform: translateX(-50%);
   width: 80px;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--mercedes-gold),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
 }
 
 .hero p {
@@ -339,12 +345,13 @@ header::after {
   font-weight: 600;
   text-decoration: none;
   border-radius: 5px;
-  margin-top: 10px; /* Reduce top margin */
+  margin-top: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   will-change: transform;
   cursor: pointer;
   letter-spacing: 1px;
+  animation: none;
 }
 
 .cta-button:hover {
@@ -362,20 +369,21 @@ header::after {
 /* Services Section */
 .services {
   padding: 8rem 2rem;
-  background: var(--gradient-silver);
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
   position: relative;
   z-index: 1;
-  padding-top: 8rem; /* Reset to normal padding */
-  margin-top: 0; /* Reset margin */
+  padding-top: 8rem;
+  margin-top: 0;
 }
 
 .services h2 {
   text-align: center;
   font-size: 3rem;
-  color: var(--mercedes-black);
+  color: var(--mercedes-gold);
   margin-bottom: 4rem;
   position: relative;
   padding-bottom: 1.5rem;
+  text-shadow: 0 0 10px rgba(196, 167, 119, 0.3);
 }
 
 .services h2::after {
@@ -397,19 +405,56 @@ header::after {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .service-card {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.95);
   padding: 3rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: all 0.4s ease;
   border: 1px solid rgba(196, 167, 119, 0.2);
-  will-change: transform;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-gold);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-gold);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover::after {
+  opacity: 1;
 }
 
 .service-card:hover {
@@ -422,6 +467,9 @@ header::after {
   font-size: 3.5rem;
   color: var(--mercedes-gold);
   margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(196, 167, 119, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .service-card h3 {
@@ -429,12 +477,93 @@ header::after {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   font-weight: 600;
+  position: relative;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.service-card h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: var(--gradient-gold);
 }
 
 .service-card p {
   color: var(--text-color);
   line-height: 1.8;
   font-size: 1.1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card .service-icon-container {
+  width: 80px;
+  height: 80px;
+  background: rgba(196, 167, 119, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon-container {
+  background: rgba(196, 167, 119, 0.2);
+  transform: scale(1.1);
+}
+
+.service-card .service-icon-container::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid var(--mercedes-gold);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon-container::before {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments for service cards */
+@media (max-width: 768px) {
+  .services {
+    padding: 4rem 1rem;
+  }
+
+  .services h2 {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .service-card {
+    padding: 2rem;
+  }
+
+  .service-card i {
+    font-size: 2.5rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .service-card p {
+    font-size: 1rem;
+  }
 }
 
 /* Mercedes Logo */
@@ -464,7 +593,7 @@ header::after {
 }
 
 .service-card:hover .mercedes-star {
-  animation: rotate 2s ease infinite;
+  animation: none;
 }
 
 @keyframes rotate {
@@ -544,7 +673,7 @@ header::after {
 }
 
 .gallery-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 /* Gallery Overlay Effects (Add these instead of duplicating gallery section) */
@@ -733,6 +862,10 @@ header::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.modern-call-section:hover {
+  animation: none;
 }
 
 .modern-call-section h3 {
@@ -1044,17 +1177,23 @@ footer {
   position: relative;
   padding-bottom: 1rem;
   text-align: center;
+  background: linear-gradient(
+    135deg,
+    #ffd700 0%,
+    #ffa500 25%,
+    #ffd700 50%,
+    #ffa500 75%,
+    #ffd700 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
 }
 
-.footer-section h3::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 2px;
-  background: var(--gradient-gold);
+.footer-section h3::before {
+  display: none;
 }
 
 .footer-section ul {
@@ -1109,6 +1248,7 @@ footer {
   background: white;
   border-radius: 50%;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  animation: glow 2s infinite;
 }
 
 .social-links a:hover {
@@ -1168,6 +1308,7 @@ footer {
   border: none;
   outline: none;
   padding: 0;
+  animation: glow 2s infinite;
 }
 
 .floating-call-button i,
@@ -1932,5 +2073,66 @@ main {
 @media screen and (max-width: 768px) {
   body {
     font-size: var(--font-size-mobile);
+  }
+}
+
+/* Keyframes for animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+    text-shadow: 0 0 5px #ffd700;
+  }
+  50% {
+    background-position: 0% 0;
+    text-shadow: 0 0 10px #ffd700;
+  }
+  100% {
+    background-position: 200% 0;
+    text-shadow: 0 0 5px #c0c0c0;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px var(--mercedes-gold), 0 0 10px var(--mercedes-gold);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--mercedes-gold), 0 0 30px var(--mercedes-gold);
+  }
+  100% {
+    box-shadow: 0 0 5px var(--mercedes-gold), 0 0 10px var(--mercedes-gold);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
