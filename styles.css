@@ -30,8 +30,8 @@
   --golden-border: #d4af37;
   --mercedes-silver: #c0c0c0;
   --mercedes-black: #000000;
-  --font-size-base: 18px;
-  --font-size-mobile: 20px;
+  --font-size-base: 16px;
+  --font-size-mobile: 14px;
   --mercedes-gold: #c4a777;
   --mercedes-gold-light: #e9d5a0;
   --mercedes-gold-dark: #a58a56;
@@ -800,7 +800,7 @@ header::after {
 @media (max-width: 768px) {
   body {
     padding-top: 70px; /* Adjust body padding for mobile */
-    font-size: 14px;
+    font-size: var(--font-size-mobile);
   }
 
   header {
@@ -808,37 +808,32 @@ header::after {
   }
 
   .hero {
-    height: 100vh;
-    min-height: auto;
-    padding: 70px 1rem 2rem 1rem;
+    height: auto;
+    min-height: 100vh;
+    padding: 60px 1rem 2rem;
     margin-top: -70px;
     align-items: center;
   }
 
   .hero-content {
-    padding: 1rem;
-    width: 95%;
-    margin-bottom: 0; /* No bottom margin needed on mobile */
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .hero h1 {
-    font-size: 2rem;
-    margin-bottom: 0.2rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
   }
 
   .hero .subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.8rem;
-  }
-
-  .hero .subtitle::after {
-    width: 50px;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
   }
 
   .hero p {
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 
   .services,
@@ -930,12 +925,12 @@ header::after {
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
   }
 
   .hero p {
-    font-size: 1rem;
+    font-size: 0.85rem;
     margin-bottom: 1.5rem;
   }
 
