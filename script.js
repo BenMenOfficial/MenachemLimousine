@@ -278,11 +278,33 @@ const initGallery = () => {
   });
 };
 
-// Initialize everything when DOM is loaded
+// Scroll reveal functionality
+function revealOnScroll() {
+  const elements = document.querySelectorAll(
+    ".reveal, .hero-content, .service-card, .gallery-item, .modern-call-section, .info-item, .footer-section"
+  );
+
+  elements.forEach((element) => {
+    const elementTop = element.getBoundingClientRect().top;
+    const elementVisible = 150;
+
+    if (elementTop < window.innerHeight - elementVisible) {
+      element.classList.add("active");
+    }
+  });
+}
+
+// Initial check on page load
 document.addEventListener("DOMContentLoaded", () => {
   createMobileNav();
   initializeForm();
   initializeScrollAnimations();
   initializeHeaderEffect();
   initGallery(); // Initialize gallery
+  revealOnScroll();
+});
+
+// Check on scroll
+window.addEventListener("scroll", () => {
+  revealOnScroll();
 });
