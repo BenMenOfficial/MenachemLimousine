@@ -284,6 +284,14 @@ header::after {
   border: 1px solid rgba(196, 167, 119, 0.3);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   margin-top: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.hero-content.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero h1 {
@@ -423,6 +431,14 @@ header::after {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.service-card.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .service-card::before {
@@ -658,11 +674,14 @@ header::after {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 250px;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
 }
 
-.gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.gallery-item.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gallery-item img {
@@ -672,8 +691,9 @@ header::after {
   transition: transform 0.5s ease;
 }
 
-.gallery-item:hover img {
-  transform: scale(1.1);
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Gallery Overlay Effects (Add these instead of duplicating gallery section) */
@@ -780,6 +800,14 @@ header::after {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.info-item.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .info-item:hover {
@@ -862,6 +890,14 @@ header::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.modern-call-section.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .modern-call-section:hover {
@@ -1168,6 +1204,14 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.footer-section.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .footer-section h3 {
@@ -2135,4 +2179,75 @@ main {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* Add scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animations */
+.service-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.service-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.service-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.service-card:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.service-card:nth-child(5) {
+  transition-delay: 0.5s;
+}
+.service-card:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+.gallery-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.gallery-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.gallery-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.gallery-item:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.gallery-item:nth-child(5) {
+  transition-delay: 0.5s;
+}
+.gallery-item:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+.info-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.info-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.info-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.footer-section:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.footer-section:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.footer-section:nth-child(3) {
+  transition-delay: 0.3s;
 }
