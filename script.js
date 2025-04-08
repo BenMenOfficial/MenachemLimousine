@@ -38,6 +38,59 @@ const createMobileNav = () => {
   });
 };
 
+// Responsive image handling
+const handleResponsiveImages = () => {
+  const images = document.querySelectorAll("img[data-srcset]");
+  images.forEach((img) => {
+    const srcset = img.getAttribute("data-srcset");
+    if (window.innerWidth <= 768) {
+      img.src = srcset.split(",")[0].split(" ")[0];
+    } else {
+      img.src = srcset.split(",")[1].split(" ")[0];
+    }
+  });
+};
+
+// Handle touch events for mobile devices
+const handleTouchEvents = () => {
+  const elements = document.querySelectorAll(
+    ".service-card, .gallery-item, .info-item"
+  );
+
+  elements.forEach((element) => {
+    element.addEventListener("touchstart", () => {
+      element.classList.add("hover-active");
+    });
+
+    element.addEventListener("touchend", () => {
+      element.classList.remove("hover-active");
+    });
+  });
+};
+
+// Initialize responsive features
+const initializeResponsiveFeatures = () => {
+  createMobileNav();
+  handleResponsiveImages();
+  handleTouchEvents();
+
+  // Add resize listener
+  window.addEventListener("resize", () => {
+    handleResponsiveImages();
+  });
+};
+
+// Initialize all features when DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  initializeResponsiveFeatures();
+  initializeForm();
+  initializeScrollAnimations();
+  initializeHeaderEffect();
+  initGallery();
+  showAllElements();
+  addTouchListeners();
+});
+
 // Form submission handling with validation
 const initializeForm = () => {
   const form = document.querySelector(".contact-form");
@@ -302,27 +355,6 @@ function showAllElements() {
     }
   });
 }
-
-// Initial check on page load
-document.addEventListener("DOMContentLoaded", () => {
-  try {
-    createMobileNav();
-    initializeForm();
-    initializeScrollAnimations();
-    initializeHeaderEffect();
-    initGallery(); // Initialize gallery
-
-    // Make all elements visible immediately
-    showAllElements();
-
-    // וגם: נוסיף קריאה שוב אחרי 500ms למקרה שהטעינה התעכבה
-    setTimeout(showAllElements, 500);
-  } catch (error) {
-    console.error("Error initializing page:", error);
-  }
-});
-
-// אין צורך בבדיקה בזמן גלילה כי כל האלמנטים תמיד גלויים
 
 // For mobile/touch devices
 function addTouchListeners() {
