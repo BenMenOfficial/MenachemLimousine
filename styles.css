@@ -1899,3 +1899,46 @@ html {
     box-sizing: border-box;
   }
 }
+
+/* Lightbox Styles */
+.simple-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.simple-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.simple-lightbox.active .lightbox-img {
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .lightbox-img {
+    max-width: 95%;
+    max-height: 95vh;
+  }
+}
