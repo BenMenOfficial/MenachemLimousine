@@ -162,10 +162,12 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 2000; /* Increase z-index to ensure header is always on top */
+  left: 0;
+  right: 0;
+  z-index: 2000;
   transition: all 0.3s ease;
   border-bottom: 1px solid rgba(196, 167, 119, 0.3);
-  height: 80px; /* Set fixed height for header */
+  height: 80px;
 }
 
 nav {
@@ -240,6 +242,7 @@ nav {
   display: flex;
   gap: 2.5rem;
   list-style: none;
+  position: relative;
 }
 
 .nav-links a {
@@ -248,48 +251,36 @@ nav {
   font-weight: 500;
   font-size: 1.1rem;
   position: relative;
-  padding: 0.5rem 0;
-  transition: color 0.3s ease;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  animation: none;
-}
-
-.nav-links a i {
-  color: var(--mercedes-gold);
-  margin-left: 0.5rem;
-  font-size: 1rem;
-  transition: transform 0.3s ease;
-  will-change: transform;
-}
-
-.nav-links a:hover i {
-  transform: translateY(-2px);
-}
-
-.nav-links a::before {
-  content: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.5rem 1rem;
 }
 
 .nav-links a::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--gradient-gold);
-  transition: width 0.3s ease;
+  background: var(--mercedes-gold);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links a:hover {
   color: var(--mercedes-gold);
-  animation: none;
 }
 
 .nav-links a:hover::after {
   width: 100%;
+}
+
+.nav-links a i {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover i {
+  transform: translateY(-2px);
 }
 
 /* Add decorative bar below header */
@@ -332,7 +323,7 @@ header::after {
   width: 90%;
   background: rgba(26, 26, 26, 0.85);
   backdrop-filter: blur(10px);
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 15px;
   border: 1px solid rgba(196, 167, 119, 0.3);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
@@ -350,11 +341,11 @@ header::after {
 .hero h1 {
   font-family: "Secular One", sans-serif;
   font-size: clamp(3.2rem, 6.5vw, 6rem);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
   color: #ffd700;
   letter-spacing: 2px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.2;
   text-shadow: 0 0 5px #ffd700;
   text-transform: uppercase;
 }
@@ -370,11 +361,10 @@ header::after {
   color: #ffd700;
   letter-spacing: 1px;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.2;
   position: relative;
   display: inline-block;
   padding-bottom: 1.2rem;
-  position: relative;
   text-shadow: 0 0 5px #ffd700;
 }
 
@@ -390,10 +380,10 @@ header::after {
 }
 
 .hero p {
-  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  margin-bottom: 2rem;
   color: var(--mercedes-silver);
-  line-height: 1.5;
+  line-height: 1.6;
   opacity: 0.9;
 }
 
@@ -473,7 +463,7 @@ header::after {
 
 .service-card {
   background: rgba(255, 255, 255, 0.95);
-  padding: 3rem;
+  padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
@@ -533,9 +523,9 @@ header::after {
 }
 
 .service-card i {
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--mercedes-gold);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-shadow: 0 0 10px rgba(196, 167, 119, 0.3);
   position: relative;
   z-index: 1;
@@ -544,7 +534,7 @@ header::after {
 .service-card h3 {
   color: var(--mercedes-black);
   font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   font-weight: 600;
   position: relative;
   padding-bottom: 1rem;
@@ -565,15 +555,15 @@ header::after {
 .service-card p {
   color: var(--text-color);
   line-height: 1.8;
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
   position: relative;
   z-index: 1;
 }
 
 .service-card .service-icon-container {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   background: rgba(196, 167, 119, 0.1);
   border-radius: 50%;
   display: flex;
@@ -793,14 +783,22 @@ header::after {
   width: 100%;
 }
 
+/* Fix for lightbox caption */
+.lightbox-caption,
+.lightbox-text {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
 /* Contact Section */
 .contact {
   padding: 8rem 2rem;
   background: var(--gradient-silver);
   position: relative;
   z-index: 1;
-  padding-top: 8rem; /* Reset to normal padding */
-  margin-top: 0; /* Reset margin */
+  padding-top: 8rem;
+  margin-top: 0;
 }
 
 .contact h2 {
@@ -828,11 +826,8 @@ header::after {
   );
 }
 
-/* Contact Container Layout */
 .contact-container {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 3rem;
@@ -842,18 +837,16 @@ header::after {
 }
 
 .contact-info {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
   max-width: 450px;
   flex: 1;
-  min-width: 280px;
-  max-width: 450px;
 }
 
 .info-item {
-  display: flex !important;
+  display: flex;
   align-items: center;
   gap: 1.5rem;
   padding: 1.5rem;
@@ -861,12 +854,6 @@ header::after {
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: none !important;
-  width: 100%;
-  visibility: visible !important;
 }
 
 .info-item:hover {
@@ -878,31 +865,24 @@ header::after {
   font-size: 2rem;
   color: var(--mercedes-gold);
   background: none;
-  -webkit-text-fill-color: var(--mercedes-gold);
 }
 
 .info-item-content {
   flex: 1;
-  overflow: hidden; /* מונע גלישה של התוכן */
-  word-break: break-word; /* שובר מילים ארוכות */
-  hyphens: auto; /* מוסיף מקף אוטומטי בין מילים */
+  overflow: hidden;
+  word-break: break-word;
+  hyphens: auto;
 }
 
-.info-item-content h3 {
-  font-size: 1.2rem;
-  color: var(--mercedes-black);
-  margin-bottom: 0.5rem;
-}
-
-.info-item-content p {
+.info-item p {
   color: var(--text-color);
-  font-size: 1rem;
-  overflow-wrap: break-word; /* שובר מילים ארוכות */
-  word-wrap: break-word; /* תמיכה בדפדפנים ישנים */
-  -ms-word-break: break-all; /* לדפדפן IE */
-  word-break: break-word; /* שובר מילים לפי צורך */
-  max-width: 100%; /* מגביל את הרוחב */
-  display: block; /* מציג כבלוק לשליטה טובה יותר */
+  font-size: 1.1rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  max-width: 100%;
+  display: block;
 }
 
 .phone-number {
@@ -926,8 +906,6 @@ header::after {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 300px;
-  will-change: transform;
-  cursor: pointer;
 }
 
 .phone-number a i {
@@ -963,18 +941,6 @@ header::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: none !important;
-}
-
-.modern-call-section.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.modern-call-section:hover {
-  animation: none;
 }
 
 .modern-call-section h3 {
@@ -1036,8 +1002,6 @@ header::after {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 300px;
-  will-change: transform;
-  cursor: pointer;
 }
 
 .whatsapp-link a i {
@@ -1053,6 +1017,48 @@ header::after {
 
 .whatsapp-link a:hover i {
   transform: rotate(15deg);
+}
+
+/* Mobile Contact Adjustments */
+@media (max-width: 768px) {
+  .contact {
+    padding: 4rem 1rem;
+  }
+
+  .contact h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .modern-call-section,
+  .contact-info {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .info-item {
+    padding: 1.2rem;
+  }
+
+  .modern-call-section {
+    padding: 1.5rem;
+  }
+
+  .modern-call-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .phone-number a,
+  .whatsapp-link a {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+  }
 }
 
 /* Mobile adjustments for WhatsApp link */
@@ -1217,21 +1223,6 @@ header::after {
   .floating-whatsapp-button {
     bottom: 80px;
   }
-
-  .info-item {
-    padding: 1rem;
-    gap: 0.8rem;
-  }
-
-  .info-item i {
-    font-size: 1.3rem;
-    min-width: 20px; /* מינימום רוחב לאייקון */
-  }
-
-  .info-item-content p {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
 }
 
 /* Mobile Navigation */
@@ -1275,69 +1266,80 @@ header::after {
   }
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
-  background: var(--gradient-dark);
-  color: var(--mercedes-silver);
-  padding: 2rem 1rem;
   position: relative;
-  z-index: 1;
   width: 100%;
-  clear: both;
-  flex-shrink: 0;
+  background: var(--secondary-color);
+  color: var(--accent-color);
+  padding: 2rem 0;
   margin-top: auto;
 }
 
 .footer-content {
-  display: grid !important;
-  visibility: visible !important;
-  opacity: 1 !important;
   max-width: 1200px;
   margin: 0 auto;
-  grid-template-columns: repeat(3, 1fr);
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  text-align: center;
 }
 
 .footer-section {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
+.copyright {
+  text-align: center;
+  padding: 1rem 0;
+  color: var(--mercedes-silver);
+  font-size: 0.9rem;
+  margin: 0;
+  border: none;
+  background: none;
+}
+
+@media (max-width: 768px) {
+  .copyright {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 0.85rem;
+    background: none;
+    border: none;
+    position: static;
+  }
+}
+
+/* Footer Section Styles */
 .footer-section h3 {
-  color: var(--mercedes-gold);
+  color: var(--mercedes-silver);
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   position: relative;
-  padding-bottom: 1rem;
   text-align: center;
-  background: linear-gradient(
-    135deg,
-    #ffd700 0%,
-    #ffa500 25%,
-    #ffd700 50%,
-    #ffa500 75%,
-    #ffd700 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: shine 3s linear infinite;
+  padding-bottom: 0.5rem;
 }
 
-.footer-section h3::before {
-  display: none;
+.footer-section h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.footer-section:hover h3::after {
+  width: 80px;
 }
 
 .footer-section ul {
   list-style: none;
   padding: 0;
-  text-align: center;
-  width: 100%;
 }
 
 .footer-section li {
@@ -1345,86 +1347,68 @@ footer {
 }
 
 .footer-section a {
-  color: var(--mercedes-silver);
+  color: var(--accent-color);
   text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease;
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  will-change: transform;
-}
-
-.footer-section a i {
-  color: var(--mercedes-gold);
-  margin-left: 0.5rem;
-  font-size: 0.9rem;
-  transition: transform 0.3s ease;
+  gap: 0.5rem;
 }
 
 .footer-section a:hover {
   color: var(--mercedes-gold);
-  transform: translateX(-5px);
+}
+
+.footer-section a i {
+  color: var(--mercedes-gold);
+  font-size: 1rem;
 }
 
 .social-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 1rem;
+  justify-content: center;
 }
 
 .social-links a {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
-  will-change: transform;
-  cursor: pointer;
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  animation: glow 2s infinite;
+  transition: all 0.3s ease;
 }
 
 .social-links a:hover {
+  background: var(--mercedes-gold);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Facebook */
-.social-links .facebook-icon i {
-  font-size: 1.8rem;
-  color: #1877f2;
+.social-links a i {
+  font-size: 1.2rem;
+  color: var(--accent-color);
 }
 
-/* Instagram */
-.social-links .instagram-icon i {
-  font-size: 1.8rem;
-  color: transparent;
-  background: linear-gradient(
-    45deg,
-    #f09433 0%,
-    #e6683c 25%,
-    #dc2743 50%,
-    #cc2366 75%,
-    #bc1888 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
+.social-links a:hover i {
+  color: var(--secondary-color);
 }
 
-/* WhatsApp */
-.social-links .whatsapp-icon i {
-  font-size: 1.8rem;
-  color: #25d366;
-}
+@media (max-width: 768px) {
+  .footer-section h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-/* TikTok */
-.social-links .tiktok-icon i {
-  font-size: 1.8rem;
-  color: #000000;
+  .footer-section a {
+    justify-content: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
 }
 
 /* כפתורים צפים */
@@ -1609,615 +1593,117 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  /* Hero Section */
-  .hero-content {
-    padding: 1rem;
-    width: 95%;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .hero-content .subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 1.8rem;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
-  }
-
-  .cta-button {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.5rem;
-  }
-
-  /* Contact Section */
-  .contact-container {
-    padding: 2rem;
-  }
-
-  .modern-call-section {
-    padding: 1.5rem;
-  }
-
-  .call-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-  }
-
-  .phone-number a,
-  .whatsapp-link a {
-    font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
-    max-width: 350px;
-  }
-
-  .availability {
-    font-size: 1rem;
-    margin-top: 2rem;
-    font-weight: 500;
-  }
-
-  .contact-info {
-    width: 100%;
-  }
-
-  .info-item {
-    padding: 2rem;
-  }
-
-  .info-item i {
-    font-size: 1.5rem;
-  }
-
-  .info-item p {
-    font-size: 1rem;
-  }
-
-  /* Footer */
-  .footer-section h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-section p,
-  .footer-section li a {
-    font-size: 0.9rem;
-  }
-
-  .social-links a {
-    width: 40px;
-    height: 40px;
-  }
-
-  .social-links a i {
-    font-size: 1.2rem;
-  }
-
-  .copyright {
-    font-size: 0.8rem;
-    padding: 1rem;
-  }
-
-  /* Floating Call Button */
-  .floating-call-button {
-    width: 50px;
-    height: 50px;
-    right: 20px;
-    bottom: 20px;
-  }
-
-  .floating-call-button i {
-    font-size: 1.2rem;
-  }
-
-  /* Navigation */
-  .logo {
-    font-size: 2rem;
-  }
-
-  .nav-links li a {
-    font-size: 1.6rem;
-    padding: 0.8rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  /* Hero section */
-  .hero h1 {
-    font-size: 3.2rem;
-  }
-
-  .hero h2 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1.4rem;
-  }
-
-  .cta-button {
-    font-size: 1.6rem;
-    padding: 1rem 2rem;
-  }
-
-  /* Services */
-  .service-card {
-    padding: 1.8rem;
-  }
-
-  .service-card i {
-    font-size: 2.8rem;
-  }
-
-  .service-card h3 {
-    font-size: 1.6rem;
-  }
-
-  /* Contact */
-  .call-content h3 {
-    font-size: 1.4rem;
-  }
-
-  .phone-number a,
-  .whatsapp-link a {
-    font-size: 1.2rem;
-  }
-
-  .availability {
-    font-size: 1rem;
-  }
-
-  .info-item i {
-    font-size: 1.5rem;
-  }
-
-  .info-item p {
-    font-size: 1rem;
-  }
-
-  /* Floating call button */
-  .floating-call-button {
-    width: 80px;
-    height: 80px;
-  }
-
-  .floating-call-button i {
-    font-size: 1.2rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    font-size: var(--font-size-mobile);
-  }
-}
-
-/* Footer styles */
-footer {
-  background: var(--gradient-dark);
-  color: var(--mercedes-silver);
-  padding: 2rem 1rem;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  clear: both;
-  flex-shrink: 0;
-  margin-top: auto;
-}
-
-.footer-bottom {
-  background: #141414;
-  padding: 1rem;
-  text-align: center;
-  border-top: 1px solid rgba(196, 167, 119, 0.2);
-  margin: 0;
-}
-
-/* Fix any lightbox or modal elements that might be causing issues */
-.modal {
-  display: none;
-}
-
-html {
-  scroll-padding-top: 100px;
-  scroll-behavior: smooth;
-  height: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-  margin: 0;
-  padding: 0;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  user-select: none !important;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
-/* Touch device hover support */
-.service-card.hover-active {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border-color: var(--mercedes-gold);
-}
-
-.info-item.hover-active {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-item.hover-active {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.phone-number a.hover-active {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.floating-call-button.hover-active {
-  transform: scale(1.1);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-}
-
-.social-links a.hover-active {
-  background: var(--mercedes-gold);
-  transform: translateY(-3px);
-}
-
-.nav-links a.hover-active {
-  color: var(--mercedes-gold);
-}
-
-.nav-links a.hover-active::after {
-  width: 100%;
-}
-
-.nav-links a.hover-active i {
-  transform: translateY(-2px);
-}
-
-/* Lightbox styles */
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.lightbox.active {
-  opacity: 1;
-  visibility: visible;
-  display: flex !important;
-}
-
-.lightbox-content {
-  position: relative;
-  max-width: 90%;
-  max-height: 80vh;
-  border: 3px solid var(--mercedes-gold);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.lightbox-img {
-  display: block;
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-}
-
-.gallery-item {
-  cursor: pointer;
-}
-
-/* תצוגת לייטבוקס פשוטה */
-.simple-lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  cursor: pointer;
-}
-
-.simple-lightbox.active {
-  display: flex;
-}
-
-.lightbox-img {
-  max-width: 90%;
-  max-height: 90vh;
-  object-fit: contain;
-  border: 3px solid var(--mercedes-gold);
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Section Anchor Points */
-#home,
-#services,
-#gallery,
-#contact {
-  scroll-margin-top: 100px;
-}
-
-@media (max-width: 768px) {
-  #home,
-  #services,
-  #gallery,
-  #contact {
-    scroll-margin-top: 80px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  /* Hero section */
-  .hero {
-    padding: 4rem 1.5rem;
-  }
-
-  .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero h2 {
-    font-size: 2.2rem;
-  }
-
-  .hero p {
-    font-size: 1.5rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-  }
-
-  .cta-button {
-    font-size: 1.8rem;
-    padding: 1rem 2rem;
-  }
-
-  /* Services section */
-  .services h2 {
-    font-size: 1.8rem;
+/* Desktop (min-width: 1200px) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .services-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .service-card {
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .service-card i {
-    font-size: 2rem;
-  }
-
-  .service-card h3 {
-    font-size: 1.2rem;
-  }
-
-  /* Gallery */
-  .gallery h2 {
-    font-size: 3rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 
   .gallery-container {
-    grid-template-columns: 1fr;
-  }
-
-  /* Contact section */
-  .contact h2 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
-
-  .contact-container {
-    flex-direction: column;
-  }
-
-  .modern-call-section {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .call-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .phone-number a,
-  .whatsapp-link a {
-    font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
-  }
-
-  .availability {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-top: 1.5rem;
-  }
-
-  .contact-info {
-    width: 100%;
-  }
-
-  .info-item {
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .info-item i {
-    font-size: 1.5rem;
-  }
-
-  .info-item p {
-    font-size: 1rem;
-  }
-
-  /* Footer */
-  .footer-content {
-    flex-direction: column;
-  }
-
-  .footer-section {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .footer-section h3 {
-    font-size: 1.2rem;
-  }
-
-  .footer-section p,
-  .footer-section li a {
-    font-size: 0.9rem;
-  }
-
-  .social-links a {
-    width: 60px;
-    height: 60px;
-    margin: 0 10px;
-  }
-
-  .social-links a i {
-    font-size: 1.2rem;
-  }
-
-  .footer-bottom {
-    padding: 1.5rem;
-  }
-
-  .copyright {
-    font-size: 0.8rem;
-  }
-
-  /* Floating call button */
-  .floating-call-button {
-    width: 90px;
-    height: 90px;
-    bottom: 30px;
-    right: 30px;
-  }
-
-  .floating-call-button i {
-    font-size: 1.2rem;
-  }
-
-  /* Navigation */
-  .logo {
-    font-size: 2rem;
-  }
-
-  .nav-links li a {
-    font-size: 1.6rem;
-    padding: 0.8rem;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media screen and (max-width: 480px) {
-  /* Hero section */
-  .hero h1 {
-    font-size: 3.2rem;
+/* Tablet (min-width: 769px) and (max-width: 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
   }
 
-  .hero h2 {
-    font-size: 2rem;
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .gallery-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero .subtitle {
+    font-size: 1.8rem;
   }
 
   .hero p {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
 
-  .cta-button {
-    font-size: 1.6rem;
-    padding: 1rem 2rem;
-  }
-
-  /* Services */
   .service-card {
-    padding: 1.8rem;
+    padding: 2rem;
   }
 
   .service-card i {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
 
   .service-card h3 {
-    font-size: 1.6rem;
-  }
-
-  /* Contact */
-  .call-content h3 {
-    font-size: 1.4rem;
-  }
-
-  .phone-number a,
-  .whatsapp-link a {
-    font-size: 1.2rem;
-  }
-
-  .availability {
-    font-size: 1rem;
-  }
-
-  .info-item i {
     font-size: 1.5rem;
   }
 
-  .info-item p {
-    font-size: 1rem;
+  .service-card p {
+    font-size: 1.1rem;
   }
 
-  /* Floating call button */
-  .floating-call-button {
+  .service-card .service-icon-container {
     width: 80px;
     height: 80px;
   }
-
-  .floating-call-button i {
-    font-size: 1.2rem;
-  }
 }
 
-@media screen and (max-width: 768px) {
-  body {
-    font-size: var(--font-size-mobile);
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-card i {
+    font-size: 2rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .service-card p {
+    font-size: 1rem;
+  }
+
+  .service-card .service-icon-container {
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -2373,5 +1859,43 @@ main {
   .contact-info {
     width: 100%;
     max-width: 100%;
+  }
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* מרווח נוסף מהכותרת הקבועה */
+}
+
+/* תיקון זכויות יוצרים במובייל */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+}
+
+@media (max-width: 768px) {
+  .modern-call-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
