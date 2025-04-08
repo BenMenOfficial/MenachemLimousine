@@ -323,3 +323,38 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // אין צורך בבדיקה בזמן גלילה כי כל האלמנטים תמיד גלויים
+
+// For mobile/touch devices
+function addTouchListeners() {
+  hoverElements.forEach((selector) => {
+    // Skip floating buttons
+    if (selector.includes("floating-")) return;
+
+    document.querySelectorAll(selector).forEach((el) => {
+      el.addEventListener("touchstart", function (e) {
+        // Remove hover-active from all others of same type
+        document.querySelectorAll(selector).forEach((item) => {
+          if (item !== el) item.classList.remove("hover-active");
+        });
+
+        // Toggle the current element
+        this.classList.toggle("hover-active");
+
+        // Prevent link from activating immediately on first touch
+        if (
+          this.tagName.toLowerCase() === "a" &&
+          this.classList.contains("hover-active")
+        ) {
+          e.preventDefault();
+        }
+      });
+
+      // Add document listener to remove hover when touching elsewhere
+      document.addEventListener("touchstart", function (e) {
+        if (!el.contains(e.target)) {
+          el.classList.remove("hover-active");
+        }
+      });
+    });
+  });
+}
