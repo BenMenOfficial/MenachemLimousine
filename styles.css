@@ -736,9 +736,8 @@ header::after {
   transition: transform 0.5s ease;
 }
 
-.gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.gallery-item:hover img {
+  transform: scale(1.05);
 }
 
 /* Gallery Overlay Effects (Add these instead of duplicating gallery section) */
@@ -1411,10 +1410,38 @@ footer {
   }
 }
 
+/* Class definitions for responsive visibility */
+.desktop-only {
+  display: none;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .desktop-only {
+    display: flex !important;
+  }
+
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: flex !important;
+  }
+}
+
 /* כפתורים צפים */
 .floating-call-button,
-.floating-whatsapp-button,
-.floating-email-button {
+.floating-whatsapp-button {
   position: fixed;
   width: 60px !important;
   height: 60px !important;
@@ -1432,8 +1459,7 @@ footer {
   animation: glow 2s infinite;
 }
 
-.floating-call-button i,
-.floating-email-button i {
+.floating-call-button i {
   font-size: 24px !important;
   width: 24px !important;
   height: 24px !important;
@@ -1458,7 +1484,6 @@ footer {
   color: white;
   bottom: 20px;
   right: 20px;
-  display: none; /* מוסתר כברירת מחדל */
 }
 
 .floating-whatsapp-button {
@@ -1468,17 +1493,8 @@ footer {
   left: 20px;
 }
 
-.floating-email-button {
-  background-color: #2196f3;
-  color: white;
-  bottom: 20px;
-  right: 20px;
-  display: none; /* מוסתר כברירת מחדל */
-}
-
 .floating-call-button:hover,
-.floating-whatsapp-button:hover,
-.floating-email-button:hover {
+.floating-whatsapp-button:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -1486,14 +1502,6 @@ footer {
 /* תצוגה במובייל */
 @media (max-width: 768px) {
   .floating-call-button {
-    display: flex !important;
-  }
-
-  .floating-email-button {
-    display: none !important;
-  }
-
-  .floating-whatsapp-button {
     display: flex !important;
   }
 
@@ -1522,12 +1530,9 @@ footer {
     display: none !important;
   }
 
-  .floating-email-button {
-    display: flex !important;
-  }
-
   .floating-whatsapp-button {
-    display: none !important;
+    left: auto;
+    right: 20px;
   }
 
   /* הצגת הפוטר במחשב */
@@ -1940,5 +1945,38 @@ html {
   .lightbox-img {
     max-width: 95%;
     max-height: 95vh;
+  }
+}
+
+/* Add permanent zoom indicator */
+.gallery-item::before {
+  content: "\f06e"; /* עין - מסמלת צפייה */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 1.2rem;
+  background: rgba(0, 0, 0, 0.5);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Add hover effect for desktop */
+@media (min-width: 769px) {
+  .gallery-item::before {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-item:hover::before {
+    opacity: 1;
   }
 }
