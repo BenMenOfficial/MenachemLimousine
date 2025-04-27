@@ -141,10 +141,10 @@
         </div>
         <div class="service-card">
           <div class="service-icon-container">
-            <i class="fas fa-city"></i>
+            <i class="fas fa-synagogue"></i>
           </div>
-          <h3>סיורים מודרכים</h3>
-          <p>סיורים ברחבי הארץ, עם נהג מקצועי ומנוסה.</p>
+          <h3>חברה שומרת שבת</h3>
+          <p>אפשרות לנהגים דוברי יידיש.</p>
         </div>
         <div class="service-card">
           <div class="service-icon-container">
@@ -298,12 +298,6 @@
     >
       <i class="fab fa-whatsapp"></i>
     </a>
-    <a
-      href="mailto:menahemkunin@gmail.com"
-      class="floating-email-button desktop-only"
-    >
-      <i class="fas fa-envelope"></i>
-    </a>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -370,6 +364,7 @@
             lightboxImg.src = imgSrc;
             simpleLightbox.classList.add("active");
             document.body.style.overflow = "hidden"; // מניעת גלילה כשהלייטבוקס פתוח
+            document.body.classList.add("lightbox-open"); // הוספת מחלקה להסתרת header
           });
         });
 
@@ -377,6 +372,7 @@
         simpleLightbox.addEventListener("click", function () {
           this.classList.remove("active");
           document.body.style.overflow = ""; // החזרת אפשרות הגלילה
+          document.body.classList.remove("lightbox-open"); // הסרת מחלקה להסתרת header
           setTimeout(() => {
             lightboxImg.src = "";
           }, 300);
@@ -390,6 +386,7 @@
           ) {
             simpleLightbox.classList.remove("active");
             document.body.style.overflow = "";
+            document.body.classList.remove("lightbox-open"); // הסרת מחלקה להסתרת header
             setTimeout(() => {
               lightboxImg.src = "";
             }, 300);
