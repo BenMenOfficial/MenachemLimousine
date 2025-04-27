@@ -1980,3 +1980,16 @@ html {
     opacity: 1;
   }
 }
+
+.simple-lightbox.active ~ .floating-call-button,
+.simple-lightbox.active ~ .floating-whatsapp-button {
+  display: none !important;
+}
+
+.simple-lightbox.active ~ header {
+  display: none !important;
+}
+
+.lightbox-open header {
+  display: none !important;
+}
