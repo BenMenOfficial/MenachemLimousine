@@ -191,6 +191,13 @@ nav {
   animation: none;
 }
 
+.logo-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
 .logo i {
   color: var(--mercedes-gold);
   font-size: 1.5rem;
@@ -1870,7 +1877,7 @@ footer {
 /* Smooth Scroll Behavior */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px; /* מרווח נוסף מהכותרת הקבועה */
+  scroll-padding-top: 80px;
 }
 
 /* תיקון זכויות יוצרים במובייל */
@@ -1992,4 +1999,53 @@ html {
 
 .lightbox-open header {
   display: none !important;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: translateY(-2px);
+}
+
+.contact-description {
+  color: var(--mercedes-silver);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.info-item-content h4 {
+  color: var(--mercedes-gold);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.info-description {
+  color: var(--mercedes-silver);
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .contact-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-item-content h4 {
+    font-size: 1.1rem;
+  }
+
+  .info-description {
+    font-size: 0.85rem;
+  }
 }
